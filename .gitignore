@@ -1,0 +1,13 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (se usar)
+node_modules/
+package-lock.json

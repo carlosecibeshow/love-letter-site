@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Amor da Minha Vida</title>
+    <!-- Fontes românticas e modernas -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Fundo Rosa Escuro com Luz Neon */
+        body {
+            background-color: #1a000d; 
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Efeito de Luz Centralizada */
+        .luz-fundo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,20,147,0.2) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4da6;
+            font-size: 3.5rem;
+            text-shadow: 0 0 15px #ff1493;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* Contador de Dias */
+        .contador-box {
+            background: rgba(255, 20, 147, 0.08);
+            border: 1px solid #ff4da6;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.25);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .dias-numero {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #ff4da6;
+            text-shadow: 0 0 15px #ff4da6;
+            display: block;
+        }
+
+        .contador-legenda {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #ffb3d9;
+        }
+
+        /* Botões Estilizados */
+        .btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ff1493;
+        }
+
+        /* Espaço de Frases */
+        .frase-container {
+            min-height: 70px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #ffe6f2;
+            font-size: 1.1rem;
+            padding: 0 20px;
+        }
+
+        /* Galeria Dinâmica de Fotos */
+        .galeria {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .foto-box {
+            width: 100%;
+            height: 240px;
+            border: 2px solid #ff4da6;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .foto-box.foto-larga {
+            grid-column: span 2;
+            height: 320px;
+        }
+
+        .foto-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .foto-box.placeholder {
+            background: linear-gradient(135deg, rgba(255,20,147,0.2) 0%, rgba(255,105,180,0.1) 100%);
+            color: #ff4da6;
+            font-size: 3rem;
+        }
+
+        /* Seção da Carta */
+        .carta {
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 5px solid #ff1493;
+            border-radius: 4px;
+            padding: 30px;
+            text-align: left;
+            line-height: 1.8;
+            margin-top: 40px;
+            margin-bottom: 50px;
+            box-shadow: inset 0 0 20px rgba(255, 20, 147, 0.05), 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .carta-titulo {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4da6;
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+        }
+
+        .carta p {
+            font-size: 1.05rem;
+            color: #f0e6ec;
+            margin-bottom: 15px;
+        }
+
+        /* Elemento dos Corações Voadores */
+        .coracao {
+            position: fixed;
+            color: #ff1493;
+            font-size: 1.5rem;
+            animation: subir 4s linear infinite;
+            opacity: 0;
+            z-index: 999;
+            pointer-events: none;
+            text-shadow: 0 0 8px #ff1493;
+        }
+
+        @keyframes subir {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.4); opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .dias-numero {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="luz-fundo"></div>
+
+    <div class="container">
+        <h1>Para a Mulher da Minha Vida ❤️</h1>
+        
+        <!-- Contador de Dias Automático baseado em 14/06/2026 -->
+        <div class="contador-box">
+            <span class="dias-numero" id="contador">0</span>
+            <span class="contador-legenda">Dias construindo a história mais linda ao seu lado</span>
+        </div>
+
+        <!-- Botão para Tocar Música Romântica -->
+        <audio id="musica" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
+        <button class="btn" onclick="controlarMusica()">🎵 Tocar Nossa Música</button>
+
+        <!-- Botão de Pensamentos Românticos -->
+        <button class="btn" onclick="mudarFrase()">✨ Ler um Pensamento Meu</button>
+        <div class="frase-container">
+            <p id="texto-frase">Clique no botão acima para ver o que eu sinto agora...</p>
+        </div>
+
+        <!-- Galeria de Fotos de Vocês -->
+        <div class="galeria">
+            <!-- Foto Principal de Vocês Bem Juntos -->
+            <div class="foto-box foto-larga placeholder">
+                <span>📷</span>
+            </div>
+            <!-- Foto de Perfil Linda Dela em Preto e Branco -->
+            <div class="foto-box placeholder">
+                <span>📸</span>
+            </div>
+            <!-- Foto Espontânea do Cabelo Longo ao Sol -->
+            <div class="foto-box placeholder">
+                <span>✨</span>
+            </div>
+        </div>
+
+        <!-- Carta Emocionante com Declaração Intensa -->
+        <div class="carta">
+            <h2 class="carta-titulo">Minha Linda,</h2>
+            <p>Desde o dia 14 de junho de 2026, a minha definição de felicidade mudou completamente. Percebi que caminhar ao seu lado transforma os dias comuns nas memórias mais bonitas que eu poderia construir.</p>
+            <p>Seu sorriso ilumina os meus momentos mais escuros e o seu abraço é o único lugar no mundo onde me sinto verdadeiramente em casa. Obrigado por me escolher, por me apoiar e por transbordar tanto amor na minha vida.</p>
+            <p>Este site é só um pedacinho digital do tamanho do sentimento real que carrego no peito por você todos os dias. Você é o meu presente mais bonito e o meu futuro preferido.</p>
+            <p style="text-align: right; font-weight: bold; color: #ff4da6; font-size: 1.2rem; font-family: 'Dancing Script', cursive;">Com todo o meu amor, para sempre seu. ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        // Data de Início Definida (Junho é mês 5 no JS - 0 indexed)
+        const dataInicio = new Date(2026, 5, 14); 
+
+        function atualizarContador() {
+            const hoje = new Date();
+            const diferencaTempo = hoje - dataInicio;
+            const diferencaDias = Math.floor(diferencaTempo / (1000 * 60 * 60 * 24));
+            document.getElementById('contador').innerText = diferencaDias;
+        }
+        atualizarContador();
+
+        // Controla Música e Ativa Chuva de Corações
+        function controlarMusica() {
+            const musica = document.getElementById('musica');
+            if (musica.paused) {
+                musica.play();
+                criarCoracoes();
+            } else {
+                musica.pause();
+            }
+        }
+
+        // Frases Românticas Alternáveis
+        const frases = [
+            "Você é o meu primeiro pensamento do dia e o último antes de dormir. 🥰",
+            "Se eu pudesse reviver qualquer dia da minha vida, escolheria o dia 14/06/2026. ⏳",
+            "O seu abraço tem o encaixe perfeito para acalmar o meu coração. 🌸",
+            "Amar você é a escolha mais fácil e bonita que eu já fiz na vida. ✨",
+            "Não importa para onde o futuro nos leve, desde que eu vá de mãos dadas com você. ❤️",
+            "Você não imagina o tamanho do sorriso que eu dou quando olho para você. 😍"
+        ];
+
+        function mudarFrase() {
+            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById('texto-frase').innerText = fraseAleatoria;
+            criarCoracoes();
+        }
+
+        // Animação dos Corações Flutuando na Tela
+        function criarCoracoes() {
+            for (let i = 0; i < 18; i++) {
+                setTimeout(() => {
+                    const coracao = document.createElement('div');
+                    coracao.classList.add('coracao');
+                    coracao.innerText = '❤️';
+                    coracao.style.left = Math.random() * 100 + 'vw';
+                    coracao.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(coracao);
+                    setTimeout(() => coracao.remove(), 4000);
+                }, i * 180);
+            }
+        }
+    </script>
+</body>
+</html>
